@@ -12,9 +12,10 @@ Impacto:
 - Pérdida de trazabilidad
 
 Análisis:
-- Se revisan logs del sistema y del servicio
-- Se detectan errores de conexión intermitente
-- Se identifica posible falla en servicio de sincronización
+- Se revisan logs del sistema en entorno Windows Server y servicios asociados en Azure
+- Se detectan errores de conexión intermitente durante los intentos de sincronización
+- Se validan puertos 5000 y 5001 en firewall, descartando bloqueo de red
+- Se analiza comportamiento del servicio de sincronización, identificando fallas en su ejecución
 
 Hipótesis:
 El servicio encargado de enviar los datos al servidor se encuentra detenido o mal configurado.
@@ -24,10 +25,14 @@ Validación:
 - Se realizan pruebas de conectividad
 - Se revisa la configuración del sistema
 
+Conclusion del Análisis:
+La causa raíz se relaciona con una falla en el servicio de sincronización, no con problemas de red ni configuración de firewall.
+
 Solución:
 - Reinicio del servicio de sincronización
 - Corrección de parámetros de conexión
 - Verificación de envío correcto de datos
+- Se simula una nueva transacción para verificar el flujo completo
 
 Resultado:
 Las ventas comienzan a reflejarse correctamente en el sistema central.
